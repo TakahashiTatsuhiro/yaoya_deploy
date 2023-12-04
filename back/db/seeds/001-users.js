@@ -7,7 +7,7 @@ const crypto = require('crypto');
 exports.seed = async function (knex) {
 	// Deletes ALL existing entries
 	// await knex('table_name').del()
-	const users = ['admin', '高橋ジョージ', 'tatsu', 'taro', 'jiro', 'sabro, maaya'];
+	const users = ['admin', '高橋ジョージ', 'tatsu', 'taro', 'jiro', 'sabro', 'maaya'];
 	for (const username of users) {
 		const exists = await knex('users').where({ username }).first();
 		if (!exists) {

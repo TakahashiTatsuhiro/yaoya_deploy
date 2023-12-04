@@ -13,12 +13,12 @@ export default function Result() {
 
   const fetchData = async () => {
     try {
-      // const url = import.meta.env.VITE_DEVELOPMENT_BACKEND_URL || "https://yaoya-test2.onrender.com";
+      // const url = import.meta.env.VITE_DEVELOPMENT_BACKEND_URL || "https://yaoya-deploy.onrender.com";
       let url;
       if (process.env.NODE_ENV === 'development') {
         url = import.meta.env.VITE_DEVELOPMENT_BACKEND_URL;
       } else {
-        url = 'https://yaoya-test2.onrender.com';
+        url = 'https://yaoya-deploy.onrender.com';
       }
       console.log('userId', userId);
       console.log('url', url);
@@ -105,12 +105,12 @@ export default function Result() {
     const idArr = checkedCheckboxes.map((el) => el.split('x')[1]); // PATCHで投げるbody
     // console.log('フロントエンド側', idArr);
 
-    // const url = import.meta.env.VITE_DEVELOPMENT_BACKEND_URL || 'https://yaoya-test2.onrender.com';
+    // const url = import.meta.env.VITE_DEVELOPMENT_BACKEND_URL || 'https://yaoya-deploy.onrender.com';
     let url;
     if (process.env.NODE_ENV === 'development') {
       url = import.meta.env.VITE_DEVELOPMENT_BACKEND_URL;
     } else {
-      url = 'https://yaoya-test2.onrender.com';
+      url = 'https://yaoya-deploy.onrender.com';
     }
     const response = await fetch(url + `/api/udate_shopping_status/${userId}`, {
       method: 'PATCH',

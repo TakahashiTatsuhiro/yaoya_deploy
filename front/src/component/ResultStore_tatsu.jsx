@@ -14,6 +14,16 @@ export default function ResultStore() {
 
 	useEffect(() => {
 		setStoreName(location.state.storeName);
+		// axios
+		//   .get(`/api/customers/${3}/result/shopping?store_id=${storeId}`) //後でユーザーIDに書き換え
+		//   .then((response) => {
+		//     console.log('response', response.data);
+		//     setStoreProductDetails(response.data);
+		//   })
+		//   .catch((error) => {
+		//     console.log(error);
+		//     alert('取得に失敗しました');
+		//   });
 
 		const fetchData_param = async (storeId) => {
 			try {
@@ -41,18 +51,28 @@ export default function ResultStore() {
 			}
 		};
 		fetchData_param(storeId);
+		// 以下、レスポンス来たと仮定して。。。
+		// const arr = [
+		//   { id: 3, storeId: 3, productName: '豚肉', piece: 10, unit: '個', flag: false, storeName: 'セブンイレブン' },
+		//   { id: 4, storeId: 3, productName: 'あじ', piece: 2, unit: '個', flag: false, storeName: 'セブンイレブン' },
+		//   { id: 5, storeId: 3, productName: '塩', piece: 3, unit: '個', flag: false, storeName: 'セブンイレブン' },
+		// ];
+
+		// setStoreProductDetails(arr);
 	}, []);
 
+	// console.log(storeProductDetails);
 
 	const product = storeProductDetails.map((el, index) => {
 		return (
-			<ul className="details-ul" key={index}>
-			<React.Fragment key={`fragment-${index}`}>
-			  <li key={`item-${index}`}>
-				<span className="bold-span">{el.productName}</span> ({el.piece}) [{el.unit}]
-			  </li>
-			</React.Fragment>
-		  </ul>
+			<ul className='details-ul' key={index}>
+				<React.Fragment key={`fragment-${index}`}>
+					<li key={`item-${index}`}>
+						{el.productName}: ({el.piece}
+						{el.unit})
+					</li>
+				</React.Fragment>
+			</ul>
 		);
 	});
 
